@@ -9,7 +9,7 @@ with open('README.md') as f:
 
 setup(
     name='subtr',
-    version='0.0.2',
+    version='0.0.3',
     description='Subtitle Translator',
     long_description=README,
     long_description_content_type="text/markdown",

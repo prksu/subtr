@@ -76,7 +76,7 @@ def main():
 
     client = translate.TranslationServiceClient()
 
-    project_id = os.environ.get("GOOGLE_CLOUD_PROJECT_ID")
+    project_id = os.environ.get("PROJECT_ID")
     location = 'global'
 
     parent = client.location_path(project_id, location)
