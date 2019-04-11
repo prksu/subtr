@@ -46,7 +46,7 @@ def do_translate(client, parent, args):
             with io.open(filepath, 'r') as input_file:
                 contents = input_file.readlines()
                 contents[0] = "1\n"
-                for i in enumerate(len(contents)):
+                for i, _ in enumerate(contents):
                     if contents[i][0].isdigit():
                         output_file.write(contents[i].encode())
                     else:
