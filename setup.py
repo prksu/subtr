@@ -9,7 +9,7 @@ with open('README.md') as f:
 
 setup(
     name='subtr',
-    version='0.0.4',
+    version='0.0.5',
     description='Subtitle Translator',
     long_description=README,
     long_description_content_type="text/markdown",
@@ -25,6 +25,7 @@ setup(
     },
     install_requires=[
         'google-cloud-translate==1.4.0',
+        'google-cloud-logging==1.10.0',
         'tqdm==4.31.1'
     ]
 )

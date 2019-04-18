@@ -26,6 +26,7 @@ import io
 import argparse
 import mmap
 from tqdm import tqdm
+from google.cloud import logging
 from google.cloud import translate_v3beta1 as translate
 
 def do_translate(client, parent, args):
@@ -33,6 +34,9 @@ def do_translate(client, parent, args):
     filepath = args.file_path
     source = args.source_lang
     target = args.target_lang
+
+    logging_client = logging.Client()
+    logger = logging_client.logger('subtr logger')
 
     fpath = open(filepath, "r+")
     buf = mmap.mmap(fpath.fileno(), 0)
@@ -57,6 +61,8 @@ def do_translate(client, parent, args):
                             source_language_code=source,
                             target_language_code=target)
                         for translation in response.translations:
+                            logger.log_text(
+                                print("Translated text: ", translation.translated_text))
                             output_file.write(
                                 (translation.translated_text).encode())
                     pbar.set_postfix(file=filepath[-10:], refresh=False)
